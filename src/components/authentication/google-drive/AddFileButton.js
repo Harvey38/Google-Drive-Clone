@@ -1,18 +1,23 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, {useState} from 'react'
+import React, {useState,useEffect} from 'react'
 import {faFileUpload} from '@fortawesome/free-solid-svg-icons'
 import {useAuth} from '../../../contexts/AuthContext';
 import {database, storage} from './../../../firebase'
 import {ROOT_FOLDER} from '../../hooks/useFolder'
 import { uuid } from 'uuidv4';
 import ReactDom from 'react-dom';
-import { ProgressBar, Toast } from 'react-bootstrap';
-export default function AddFileButton({ currentFolder }) {
+import { ProgressBar, Toast,Dropdown } from 'react-bootstrap';
+import './AddFileButton.css'
+export default function AddFileButton({ currentFolder}) {
     const [uploadingFiles,setUploadingFiles]= useState([])
     const {currentUser }=useAuth();
+  
+    
+  
     function handleUpload(e)
     {
-      const file = e.target.files[0];
+        
+      const file =  e?.target?.files[0] ;
 
       if(currentFolder==null || file==null)
       {
@@ -36,7 +41,7 @@ export default function AddFileButton({ currentFolder }) {
      }
      console.log(path);
       const filePath= currentFolder==ROOT_FOLDER ? `${path}/${file.name}` : `${path}/${currentFolder.name}/${file.name}`
-    //   console.log(filePath);
+      console.log(filePath);
       const uploadTask = storage.ref(`/files/${currentUser.uid}/${filePath}`).put(file)
       uploadTask.on('state_changed',snapshot=>{
           const progress = snapshot.bytesTransferred/snapshot.totalBytes;
@@ -92,10 +97,10 @@ export default function AddFileButton({ currentFolder }) {
     }
     return (
         <>
-        <label className='btn btn-outline-success btn-md m-0 ml-2'>
-            <FontAwesomeIcon icon={faFileUpload}/>
+        <Dropdown.Item as='label' className='btn btn-outline-success btn-md m-0'>
+            <FontAwesomeIcon icon={faFileUpload}/> New File
             <input type="file" onChange={handleUpload} style={{opacity:0 , position:'absolute',left:'-999px'}}/>
-        </label>
+        </Dropdown.Item>
         {uploadingFiles.length>0 && ReactDom.createPortal(
             <div
                 style={{

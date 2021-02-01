@@ -2,3 +2,20 @@
 {
     display: flex;
 }
+.sidebar
+{
+    display:flex;
+    justify-content: center;
+    
+    height: 90vh;
+    width: 15%;
+    background-color: #ecf0f1;
+    margin-left: -1%;
+    margin-right: 2%;
+}
+.buttons{
+    margin-top: 10%;
+}
+.new-btn{
+    border-radius: 12px !important;
+}

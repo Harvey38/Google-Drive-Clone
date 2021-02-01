@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Button, Form, Modal } from 'react-bootstrap'
+import { Button, Form, Modal,Dropdown} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faFolderPlus} from '@fortawesome/free-solid-svg-icons'
 import {database} from '../../../firebase'
@@ -37,9 +37,9 @@ export default function AddfolderButton({currentFolder}) {
     return (
         
         <>
-            <Button onClick={openModal} variant="outline-success" size="md">
-                <FontAwesomeIcon icon={faFolderPlus}/>
-            </Button>
+            <Dropdown.Item onClick={openModal} variant="outline-success" size="md">
+                <FontAwesomeIcon icon={faFolderPlus} /> New Folder
+            </Dropdown.Item>
             <Modal show={open} onHide={closeModal}>
                 <Form onSubmit={handleSubmit}>
                     <Modal.Body>
