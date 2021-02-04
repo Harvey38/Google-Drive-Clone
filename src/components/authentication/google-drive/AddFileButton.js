@@ -11,9 +11,6 @@ import './AddFileButton.css'
 export default function AddFileButton({ currentFolder}) {
     const [uploadingFiles,setUploadingFiles]= useState([])
     const {currentUser }=useAuth();
-  
-    
-  
     function handleUpload(e)
     {
         
@@ -35,11 +32,11 @@ export default function AddFileButton({ currentFolder}) {
          for(let i=0;i<currentFolder.path.length;i++)
          {
              let folder = currentFolder.path[i].name;
-             console.log(folder);
+            //  console.log(folder);
              path=`${path}${folder}/`
          }
      }
-     console.log(path);
+    //  console.log(path);
       const filePath= currentFolder==ROOT_FOLDER ? `${path}/${file.name}` : `${path}/${currentFolder.name}/${file.name}`
       console.log(filePath);
       const uploadTask = storage.ref(`/files/${currentUser.uid}/${filePath}`).put(file)

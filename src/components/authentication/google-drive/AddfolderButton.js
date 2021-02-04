@@ -37,7 +37,7 @@ export default function AddfolderButton({currentFolder}) {
     return (
         
         <>
-            <Dropdown.Item onClick={openModal} variant="outline-success" size="md">
+            <Dropdown.Item onClick={openModal} variant="outline-success" >
                 <FontAwesomeIcon icon={faFolderPlus} /> New Folder
             </Dropdown.Item>
             <Modal show={open} onHide={closeModal}>

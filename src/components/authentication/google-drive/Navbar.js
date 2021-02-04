@@ -24,7 +24,7 @@ const NavbarComponent= function(props) {
                 .get()
               
             Promise.all([p1,p2]).then(res=>{
-                console.log(res)
+                // console.log(res)
                 let flag = false;
                 for(let i=0;i<2;i++)
                 {
@@ -82,11 +82,11 @@ const NavbarComponent= function(props) {
           No file or Folder with the given name exists. 
         </p>
       </Alert>:<></>}
-<Navbar bg="light" expand="sm" className='navbar_styles'>
+<Navbar bg="light" expand="lg" className='navbar_styles'>
     <Navbar.Brand as={Link} to="/"><img className='imgst' src={Drive} alt="Logo"/>PEP Drive</Navbar.Brand> 
     
-    <FormControl size="sm" ref={searchRef} type="text" placeholder="Search" className="ml-5 " />
-      <Button variant="outline-success" className='mr-5 ml-1' onClick={handleSearch}>Search</Button>
+    <FormControl size="md" ref={searchRef} type="text" placeholder="Search" />
+      <Button variant="outline-success"  onClick={handleSearch}>Search</Button>
     <Nav>
         <Nav.Link as={Link} to="/user">
             Profile

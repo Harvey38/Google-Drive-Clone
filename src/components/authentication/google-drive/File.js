@@ -6,10 +6,10 @@ const File=function({file}) {
     const handleClick =function(e) {
         if (e.type === 'click') {
             window.open(`${file.url}`, "_blank")
-          console.log('Left click');
+        //   console.log('Left click');
         } else if (e.type === 'contextmenu') {
             e.preventDefault()
-          console.log('Right click');
+        //   console.log('Right click');
           const xPos = e.pageX + "px";
           const yPos = e.pageY + "px";
         }

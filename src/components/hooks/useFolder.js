@@ -46,6 +46,7 @@ export function useFolder(folderId=null,folder=null)
 
     
     const {currentUser} = useAuth();
+    // console.log(currentUser)
     const [state,dispatch] = useReducer(reducer,{
         folderId,
         folder,

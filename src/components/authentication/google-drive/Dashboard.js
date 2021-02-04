@@ -11,7 +11,8 @@ import FolderBreadcrumbs from './FolderBreadcrumbs'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPlus } from '@fortawesome/free-solid-svg-icons'
 import './Dashboard.css';
-
+import Docs from './Docs'
+import Spreadsheet from './Spreadsheet'
 export default function Dashboard() {
     const { folderId } = useParams();
     const { folder, childFolders, childFiles = [] } = useFolder(folderId);
@@ -27,17 +28,21 @@ export default function Dashboard() {
                     <div className='sidebar'>
                         <div className='buttons'>
 
-                            <Dropdown  >
+                            <Dropdown className="drp" >
                                 <Dropdown.Toggle className='new-btn' variant="secondary" id="dropdown-basic" size='lg'>
                                     <FontAwesomeIcon icon={faPlus} />   New
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu>
                                    <AddfolderButton currentFolder={folder}  />
                                    <AddFileButton currentFolder={folder} />
+                                   <Docs currentFolder={folder}/>
+                                <Spreadsheet currentFolder={folder}/>
                                 </Dropdown.Menu>
                             </Dropdown>
+                         
                            
                         </div>
+                      
                     </div>
                     <div className='elements'>
                         <div className="d-flex align-items-center">
@@ -74,9 +79,9 @@ export default function Dashboard() {
                         )}
                     </div>
                 </div>
-               
+                
             </Container>
-         
+        
         </>
     )
 }
